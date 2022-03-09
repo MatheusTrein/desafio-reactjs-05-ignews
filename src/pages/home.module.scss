@@ -1,1 +1,19 @@
-// TODO
+.content {
+  display: flex;
+  flex-direction: column;
+
+  a {
+    & + a {
+      margin-top: 3rem;
+    }
+  }
+
+  button {
+    width: 10rem;
+    background-color: inherit;
+    border: none;
+    font-weight: 600;
+    color: var(--highlight);
+    margin-top: 3rem;
+  }
+}

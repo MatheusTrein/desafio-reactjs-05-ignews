@@ -1,0 +1,35 @@
+.navigationPosts {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2.5rem 0;
+  margin-top: 5rem;
+  position: relative;
+
+  div {
+    & + div {
+      text-align: right
+    }
+  }
+
+  span {
+    display: block;
+    color: var(--heading);
+    margin-bottom: 0.25rem;
+  }
+
+  a {
+    color: var(--highlight)
+  }
+
+  &::after {
+    content: '';
+    height: 1px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #383737;
+    position: absolute;
+    top: 0;
+
+  }
+}

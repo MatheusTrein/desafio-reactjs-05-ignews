@@ -1,0 +1,32 @@
+.postWrapper {
+
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--heading);
+    line-height: 3rem;
+  }
+
+  p {
+    font-size: 1.125rem;
+  }
+
+  .postInfo {
+    display: flex;
+    align-items: center;
+
+    span {
+      display: flex;
+      align-items: center;
+      font-size: 0.777rem;
+      font-weight: 400;
+      color: var(--info);
+      margin-top: 1.5rem;
+      margin-right: 1.5rem;
+
+      svg {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}
