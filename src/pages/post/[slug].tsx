@@ -13,6 +13,7 @@ import styles from './post.module.scss';
 import CalendarIcon from '../../../public/calendar.svg';
 import UserIcon from '../../../public/user.svg';
 import NavigationBetweenPosts from '../../components/NavigationBetweenPosts';
+import Comments from '../../components/Comments/Comments';
 
 interface Post {
   uid: string;
@@ -42,8 +43,8 @@ interface NavigationPost {
 interface PostProps {
   post: Post;
   preview?: boolean;
-  nextPost: NavigationPost | null;
-  prevPost: NavigationPost | null;
+  nextPost?: NavigationPost | null;
+  prevPost?: NavigationPost | null;
 }
 
 export default function Post({
@@ -132,6 +133,7 @@ export default function Post({
             {!preview && (
               <NavigationBetweenPosts prevPost={prevPost} nextPost={nextPost} />
             )}
+            <Comments />
           </main>
         </>
       )}
@@ -206,13 +208,13 @@ export const getStaticProps: GetStaticProps = async ({
       preview,
       prevPost: prevPost
         ? {
-            title: prevPost?.data.title,
+            title: prevPost?.data?.title,
             slug: prevPost?.uid,
           }
         : null,
       nextPost: nextPost
         ? {
-            title: nextPost.data.title,
+            title: nextPost?.data?.title,
             slug: nextPost.uid,
           }
         : null,

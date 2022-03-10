@@ -12,6 +12,7 @@ import Post, { getStaticProps, getStaticPaths } from '../../pages/post/[slug]';
 
 interface Post {
   first_publication_date: string | null;
+  last_publication_date: string | null;
   data: {
     title: string;
     banner: {
@@ -25,8 +26,16 @@ interface Post {
   };
 }
 
+interface NavigationPost {
+  title: string;
+  slug: string;
+}
+
 interface PostProps {
   post: Post;
+  preview?: boolean;
+  nextPost: NavigationPost | null;
+  prevPost: NavigationPost | null;
 }
 
 interface GetStaticPropsResult {
@@ -47,6 +56,7 @@ const mockedQueryReturn = {
 const mockedGetByUIDReturn = {
   uid: 'como-utilizar-hooks',
   first_publication_date: '2021-03-25T19:25:28+0000',
+  last_publication_date: '2021-03-26T19:25:28+0000',
   data: {
     title: 'Como utilizar Hooks',
     subtitle: 'Pensando em sincronização em vez de ciclos de vida',
@@ -222,11 +232,16 @@ describe('Post', () => {
     const postReturn = mockedGetByUIDReturn;
     const getStaticPropsContext: GetStaticPropsContext<ParsedUrlQuery> = {
       params: routeParam,
+      previewData: false,
+      preview: false,
     };
+    console.log(getStaticPropsContext);
 
     const response = (await getStaticProps(
       getStaticPropsContext
     )) as GetStaticPropsResult;
+
+    console.log(response);
 
     expect(response.props.post).toEqual(expect.objectContaining(postReturn));
   });
